@@ -65,7 +65,7 @@ def task3():
             for line in data :
                 [source,target,tm] = line.split()
 
-                if (tm > (Ti - duration)):
+                if (tm > (Ti - duration)) and tm < Ti:
                     lol.append([source,target,tm])
         G.add_edges_from(lol)
         print G
