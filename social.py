@@ -1,5 +1,6 @@
 import datetime
 import networkx as nx
+import matplotlib.pyplot as plt
 
 
 def main():
@@ -59,15 +60,20 @@ def task3():
     G = nx.Graph()
     lol = []
     for x in range (0,N-1) :
+        lol = []
         Ti = Ti + duration
         print Ti
         with open ('/home/cthulhu/Desktop/lol.csv', 'r') as data:
             for line in data :
-                [source,target,tm] = line.split()
+                (source,target,tm) = line.split()
 
-                if (tm > (Ti - duration)) and tm < Ti:
-                    lol.append([source,target,tm])
-        G.add_edges_from(lol)
-        print G
+                if (int(tm) > (Ti - duration)) and int(tm) < Ti:
+
+                    lol.append((source,target))
+            G.add_edges_from(lol)
+        nx.draw(G)
+        plt.draw()
+        plt.show()
+
 
 main()
